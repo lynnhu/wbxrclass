@@ -45,12 +45,12 @@
                     <li class="fragment">Getting set up</li>
                     <li class="fragment">Setting up the Go</li>
                     <li class="fragment">Some example scenes</li>
-                    <li class="fragment">IBuilding your first scene</li>
+                    <li class="fragment">Building your first scene</li>
                 </ul>
             </section>
             <section>
                 <ul>
-                     <li>Have Github desktop installed</li>
+                    <li>Have Github desktop installed</li>
                     <li>Have NodeJS installed</li>
                     <li>Install live-server 'sudo npm install live-server -g'</li>
                     <li><a href="https://pages.github.com/">Setup Githup pages</a></li>
@@ -58,6 +58,142 @@
                     <li>Open it in Github desktop</li>
                 </ul>
             </section>
+            <section>
+                    <ul>
+                    <li>Open basic.html in a text editor</li>
+                    <li>also cd into it from the terminal and type 'live-server'</li>
+                    <li>Lets look at the code really quick</li>
+                    </ul>
+            </section>
+
+            <section>
+                    <p>Add a primitive cube in between the scene tags</p>
+                    <pre><code data-trim>
+                    <a-box color="red"></a-box>
+                    </code></pre>
+            </section>
+
+            <section>
+                <p>A-Frame uses a right-handed coordinate system. With the default camera direction: positive X-axis extends right, positive Y-axis extends up, and the positive Z-axis extends out of the screen towards us:</p>
+                <img src="img/rh.jpg">
+            </section>
+
+            <section>
+                    <ul>
+                        <li>The default camera is at 0 0 0 the same as our box</li>
+                        <li>Change the position attribute of the box so it is in front of the camera</li>
+                        <li>Units are in meters</li>
+                    </ul>
+                    <pre><code data-trim>
+                    <a-entity id="box" geometry="primitive: box" material="color: red" position="0 2 -5"></a-entity>
+                    </code></pre>
+            </section>
+
+            <section>
+                    <ul>
+                        <li>We just changed the <a href="https://aframe.io/docs/0.8.0/components/position.html">position</a> attribute</li>
+                        <li>Also try <a href="https://aframe.io/docs/0.8.0/components/rotation.html">rotation</a></li>
+                        <li>And <a href="https://aframe.io/docs/0.8.0/components/scale.html">scale</a></li>
+                    </ul>
+                    <pre><code data-trim>
+                    <a-entity id="box" geometry="primitive: box" material="color: red" position="0 2 -5" rotation="0 45 45" scale="2 2 2"></a-entity>
+                    </code></pre>
+            </section>
+
+            <section>
+                    <ul>
+                    <li>We we can add a ground plane to give us some perspective</li>
+                    </ul>
+                    <pre><code data-trim>
+                    <a-plane position="0 0 -4" scale="10 10 0.00001" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+                    </code></pre>
+            </section>
+
+            <section>
+                    <ul>
+                    <li>Adding an image texture to the box is easy with the src attribute</li>
+                    </ul>
+                    <pre><code data-trim>
+                    <a-box src="assets/img/gypsum.jpg" position="0 2 -5" rotation="0 45 45" scale="2 2 2"></a-box>
+                    </code></pre>
+            </section>
+
+            <section>
+                    <ul>
+                    <li>Aframe has an asset manager system</li>
+                    <li>It's better to use this, within the a-scene tags add a-asset open and closing tags</li>
+                    <li>Within the a-assets tags load an image and give it an id</li>
+                    <li>Set the src attribute of the object you want to texture to the id of the image</li>
+                    </ul>
+                    <pre><code data-trim>
+<a-scene>
+        <a-assets>
+            <img id="boxTexture" src="assets/img/gypsum.jpg">
+        </a-assets>
+        <a-box src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2"></a-box>
+</a-scene>
+                    </code></pre>
+            </section>
+
+            <section>
+                    <ul>
+                    <li>To make things more interesting I made a template with teleport controls</li>
+                    <li>Open basic2.html in a text editor</li>
+                    <li>It should be in the browser as something like http://localhost:8080/basic2.html</li>
+                    <li>This uses <a href="https://github.com/fernandojsg/aframe-teleport-controls">teleport controls</a></li>
+                    </ul>
+            </section>
+
+            <section>
+                    <ul>
+                    <li>Note on the ground plane and applied texture</li>
+                    <li>The repeat attribute let me set the density of the tiling</li>
+                    </ul>
+                    <pre><code data-trim>
+                    <a-plane src="#gndTexture" repeat="30 30" position="0 0 -4" scale="30 30 0.00001" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+                    </code></pre>
+            </section>
+
+            <section>
+                    <ul>
+                    <li>Let's add an animation</li>
+                    <li>Place the a-animation tag inside the a-box tags like so</li>
+                    <li><a href="https://aframe.io/docs/0.8.0/core/animations.html">animation reference</a></li>
+                    
+                    </ul>
+                    <pre><code data-trim>
+    <a-box src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2">
+        <a-animation attribute="position" to="0 2.2 -5" direction="alternate" dur="2000" repeat="indefinite">
+        </a-animation>
+    </a-box>
+                    </code></pre>
+            </section>
+
+            <section>
+                    <ul>
+                    <li>Let's add a sky</li>
+                    <li>add the img in the a-assets section</li>
+                    <li>add the a-sky tag in the scene outside of the a-assets section</li>
+                    <li>You need an equirectangular image for a sky</li>
+                    <li><a href="https://www.flickr.com/search/?l=commderiv&q=equirectangular">Here are some</a></li>
+                    <li><a href="http://photopin.com/free-photos/equirectangular">Here are some more</a></li>
+                    </ul>
+                    <pre><code data-trim>
+<a-scene>
+        <a-assets>
+            <img id="sky" src="assets/img/env.jpg">
+        </a-assets>
+            <a-sky src="#sky"></a-sky>
+</a-scene>
+                                                </code></pre>
+            </section>
+
+
+            <section>
+                    <a href="https://medium.com/@cwervo/turning-a-screenshot-into-a-facebook-360-image-6e37919f6525">Take a screenshot of your VR scene and post as a Facebook 360 image</a>
+            </section>
+           
+        </div>
         </div>
     </div>
     <script src="lib/js/head.min.js"></script>
