@@ -53,11 +53,17 @@
                     <li>Have Github desktop installed</li>
                     <li>Have NodeJS installed</li>
                     <li>Install live-server 'sudo npm install live-server -g'</li>
-                    <li><a href="https://pages.github.com/">Setup Githup pages</a></li>
-                    <li>Create a new repo for storing yur scenes and make a branch called gh-pages</li>
+                    <li><a href="https://pages.github.com/">Setup Gitbup pages</a></li>
+                    <li>Create a new repo for storing your scenes and make a branch called gh-pages</li>
                     <li>Open it in Github desktop</li>
                 </ul>
             </section>
+            <section>
+                    <ul>
+                        <li>Fork this repo</li>
+                        <li><a href="https://github.com/mhellar/wbxrclass">repo</a></li>
+                    </ul>
+                </section>
             <section>
                     <ul>
                     <li>Open basic.html in a text editor</li>
@@ -147,7 +153,7 @@
             <section>
                     <ul>
                     <li>Note on the ground plane and applied texture</li>
-                    <li>The repeat attribute let me set the density of the tiling</li>
+                    <li>The repeat attribute lets me set the density of the tiling</li>
                     </ul>
                     <pre><code data-trim>
                     <a-plane src="#gndTexture" repeat="30 30" position="0 0 -4" scale="30 30 0.00001" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
@@ -171,7 +177,37 @@
 
             <section>
                     <ul>
-                    <li>Let's add a sky</li>
+                    <li>Building out an environment</li>
+                    <li>Add the script tag in the in between the head tags</li>
+                    <li>add the a-entity environment in the between the a-scene tags</li>
+                    <li><a href="https://github.com/feiss/aframe-environment-component">environments reference</a></li>
+                    <li>Let's tweak the environment out</li>
+                    </ul>
+                    <pre><code data-trim>
+                    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+                    <a-entity environment="preset: tron"></a-entity>
+                    </code></pre>
+            </section>
+
+            <!-- <section>
+                    <ul>
+                    <li>Loading a 3d model</li>
+                    <li>Out of the box A-frame support to 3d model file formats obj and gltf</li>
+                    <li>Obj is the classic format</li>
+                    <li><a href="https://aframe.io/docs/0.8.0/primitives/a-obj-model.html">Obj Import</a></li>
+                    <li><a href="https://aframe.io/docs/0.8.0/primitives/a-obj-model.html">Obj Import</a></li>
+                    <li><a href="https://github.com/feiss/aframe-environment-component">environments reference</a></li>
+                    </ul>
+                    <pre><code data-trim>
+                    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+                    <a-entity environment="preset: tron"></a-entity>
+                    </code></pre>
+            </section> -->
+
+
+            <section>
+                    <ul>
+                    <li>Adding a skymap</li>
                     <li>add the img in the a-assets section</li>
                     <li>add the a-sky tag in the scene outside of the a-assets section</li>
                     <li>You need an equirectangular image for a sky</li>
@@ -186,6 +222,17 @@
             <a-sky src="#sky"></a-sky>
 </a-scene>
                                                 </code></pre>
+            </section>
+            <section>
+                    <li><a href="https://aframe.io/docs/0.8.0/introduction/">A-frame reference</a></li>
+                </section>
+
+            <section>
+                    <li><a href="https://aframe.io/docs/0.8.0/introduction/visual-inspector-and-dev-tools.html">Lets have a look at the visual inspector</a></li>
+                </section>
+
+            <section>
+                <p>Homework: Make a scene, put on github, share in discord</p>
             </section>
 
 
